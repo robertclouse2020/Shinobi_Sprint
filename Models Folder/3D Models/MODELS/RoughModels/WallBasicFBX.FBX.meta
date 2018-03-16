@@ -1,0 +1,217 @@
+fileFormatVersion: 2
+guid: c1572ac18f4680c488781f81c824f633
+timeCreated: 1519397118
+licenseType: Pro
+ModelImporter:
+  serializedVersion: 21
+  fileIDToRecycleName:
+    100000: Box001
+    100002: Box002
+    100004: Box003
+    100006: Box004
+    100008: Box006
+    100010: ChimneyCylinder
+    100012: ChimneyLarge
+    100014: Cylinder004
+    100016: Cylinder005
+    100018: Cylinder006
+    100020: Cylinder007
+    100022: PieceChimney
+    100024: PieceChimney001
+    100026: PlaneWindowTex
+    100028: RoofFlat
+    100030: RoofRound
+    100032: UnitBeam
+    100034: UnitBox
+    100036: UnitDoor
+    100038: UnitHouse
+    100040: UnitWall
+    100042: UnitWall 1
+    100044: UnitWindow
+    100046: UnitWindow001
+    100048: UnitWindow002
+    100050: UnitWindow003
+    100052: //RootNode
+    400000: Box001
+    400002: Box002
+    400004: Box003
+    400006: Box004
+    400008: Box006
+    400010: ChimneyCylinder
+    400012: ChimneyLarge
+    400014: Cylinder004
+    400016: Cylinder005
+    400018: Cylinder006
+    400020: Cylinder007
+    400022: PieceChimney
+    400024: PieceChimney001
+    400026: PlaneWindowTex
+    400028: RoofFlat
+    400030: RoofRound
+    400032: UnitBeam
+    400034: UnitBox
+    400036: UnitDoor
+    400038: UnitHouse
+    400040: UnitWall
+    400042: UnitWall 1
+    400044: UnitWindow
+    400046: UnitWindow001
+    400048: UnitWindow002
+    400050: UnitWindow003
+    400052: //RootNode
+    2300000: Box001
+    2300002: Box002
+    2300004: Box003
+    2300006: Box004
+    2300008: Box006
+    2300010: ChimneyCylinder
+    2300012: ChimneyLarge
+    2300014: Cylinder004
+    2300016: Cylinder005
+    2300018: Cylinder006
+    2300020: Cylinder007
+    2300022: PieceChimney
+    2300024: PieceChimney001
+    2300026: PlaneWindowTex
+    2300028: RoofFlat
+    2300030: RoofRound
+    2300032: UnitBeam
+    2300034: UnitBox
+    2300036: UnitDoor
+    2300038: UnitHouse
+    2300040: UnitWall
+    2300042: UnitWall 1
+    2300044: UnitWindow
+    2300046: UnitWindow001
+    2300048: UnitWindow002
+    2300050: UnitWindow003
+    2300052: //RootNode
+    3300000: Box001
+    3300002: Box002
+    3300004: Box003
+    3300006: Box004
+    3300008: Box006
+    3300010: ChimneyCylinder
+    3300012: ChimneyLarge
+    3300014: Cylinder004
+    3300016: Cylinder005
+    3300018: Cylinder006
+    3300020: Cylinder007
+    3300022: PieceChimney
+    3300024: PieceChimney001
+    3300026: PlaneWindowTex
+    3300028: RoofFlat
+    3300030: RoofRound
+    3300032: UnitBeam
+    3300034: UnitBox
+    3300036: UnitDoor
+    3300038: UnitHouse
+    3300040: UnitWall
+    3300042: UnitWall 1
+    3300044: UnitWindow
+    3300046: UnitWindow001
+    3300048: UnitWindow002
+    3300050: UnitWindow003
+    3300052: //RootNode
+    4300000: UnitBox
+    4300002: UnitHouse
+    4300004: UnitWall
+    4300006: UnitWindow
+    4300008: UnitDoor
+    4300010: UnitWindow001
+    4300012: PlaneWindowTex
+    4300014: PieceChimney
+    4300016: ChimneyCylinder
+    4300018: Cylinder004
+    4300020: Cylinder005
+    4300022: Cylinder006
+    4300024: PieceChimney001
+    4300026: Box001
+    4300028: Box002
+    4300030: Box003
+    4300032: Box004
+    4300034: UnitBeam
+    4300036: UnitWall
+    4300038: Box006
+    4300040: UnitWindow002
+    4300042: UnitWindow003
+    4300044: Cylinder007
+    4300046: RoofFlat
+    4300048: RoofRound
+    4300050: ChimneyLarge
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
