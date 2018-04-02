@@ -8,7 +8,7 @@ public class PlayerTeleControl : MonoBehaviour
     public GameObject Player;
     public GameObject TeleObject;
     public KunaiMove KuniPrefab;
-    private GameObject NewKunai;    // new clone kunai obj
+    private GameObject[] NewKunai;    // new clone kunai obj
     public GameObject ShotEmitter;
     public float TeleSpeed;
     Transform offset;
@@ -27,9 +27,8 @@ public class PlayerTeleControl : MonoBehaviour
     {
         activeKunai = false;  // initialize the kunai state to not moving
         CanTeleport = false;
-        NewKunai = Instantiate(KuniPrefab.gameObject, offset);//[10];
-        NewKunai.GetComponent<Renderer>().enabled = false;
-        NewKunai.GetComponent<KunaiMove>().HasCollided = true;
+        NewKunai = new GameObject[2];
+
         mouse_pos.z = -181;
 
 
@@ -43,31 +42,42 @@ public class PlayerTeleControl : MonoBehaviour
 
 
         KuniPrefab.transform.position = ShotEmitter.transform.position;
-        if (Input.GetButtonDown("Fire1") )       // check if the left mouse button is clicked and active kunai isnt set to moving
+        if (Input.GetMouseButtonUp(0))       // check if the left mouse button is clicked and active kunai isnt set to moving
         {
-            if (NewKunai.GetComponent<KunaiMove>().HasCollided)
+
+            directionVector.x = Input.mousePosition.x - Camera.main.WorldToScreenPoint(Player.transform.position).x;               // gives weird normalization 
+            directionVector.y = Input.mousePosition.y - Camera.main.WorldToScreenPoint(Player.transform.position).y;
+            directionVector.z = Player.transform.position.z;
+
+            directionVector.Normalize();
+
+            mouse_pos.x = Input.mousePosition.x - Camera.main.WorldToScreenPoint(Player.transform.position).x;
+            mouse_pos.y = Input.mousePosition.y - Camera.main.WorldToScreenPoint(Player.transform.position).y;
+
+            angle = Mathf.Atan2(mouse_pos.y, mouse_pos.x) * Mathf.Rad2Deg;
+            angle -= 90;
+
+            for (int i = 0; i < 1; i++)
             {
-                directionVector.x = Input.mousePosition.x - Camera.main.WorldToScreenPoint(Player.transform.position).x;               // gives weird normalization 
-                directionVector.y = Input.mousePosition.y - Camera.main.WorldToScreenPoint(Player.transform.position).y;
-                directionVector.z = Player.transform.position.z;
+                if (NewKunai[0] != null)
+                {
+                    GameObject.Destroy(NewKunai[0]);
+                }
+               
+                    NewKunai[i] = Instantiate(KuniPrefab.gameObject, offset);  // sets the new clone obj to the new clone
+                    KunaiMove kunaiMove = NewKunai[i].GetComponent<KunaiMove>();
+                    NewKunai[i].transform.position = ShotEmitter.transform.position;     // sets the new clone to the shot emitter on the player
+                    kunaiMove.setDirection(directionVector);
+                    kunaiMove.setRotation(angle);
+                    kunaiMove.HasCollided = false;
+                
 
-                directionVector.Normalize();
-
-                mouse_pos.x = Input.mousePosition.x - Camera.main.WorldToScreenPoint(Player.transform.position).x;
-                mouse_pos.y = Input.mousePosition.y - Camera.main.WorldToScreenPoint(Player.transform.position).y;
-
-                angle = Mathf.Atan2(mouse_pos.y, mouse_pos.x) * Mathf.Rad2Deg;
-                angle -= 90;
-                //NewKunai[i] = Instantiate(KuniPrefab.gameObject, offset);  // sets the new clone obj to the new clone
-                KunaiMove kunaiMove = NewKunai.GetComponent<KunaiMove>();
-                NewKunai.transform.position = ShotEmitter.transform.position;     // sets the new clone to the shot emitter on the player
-                kunaiMove.setDirection(directionVector);
-                kunaiMove.setRotation(angle);
-                kunaiMove.HasCollided = false;
-                NewKunai.GetComponent<Renderer>().enabled = true;
-
-                activeKunai = true;         // set the kunai state to moving
             }
+
+
+
+            activeKunai = true;         // set the kunai state to moving
+
         }
         if (Input.GetKeyDown(KeyCode.Mouse1) && !activeKunai)  // check if the right mouse button is clicked and active kunai isnt set to moving
         {
@@ -78,7 +88,7 @@ public class PlayerTeleControl : MonoBehaviour
         if (CanTeleport == true && !activeKunai)  // check if the player isn't in contact with the kunai already
         {
 
-            Player.transform.position = Vector3.Lerp(Player.transform.position, NewKunai.transform.position, TeleSpeed / 13); // move the player to the kunai
+            Player.transform.position = Vector3.Lerp(Player.transform.position, NewKunai[0].transform.position, TeleSpeed / 13); // move the player to the kunai
 
         }
 
