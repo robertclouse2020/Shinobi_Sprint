@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Playerhealth : MonoBehaviour
 {
-    public int lives = 3;
+    
     public GameObject DeathAnim;
     public int health = 15; // player health. default is set to 15
     public bool isDead = false;     // used to tell if the player has died
@@ -31,7 +31,7 @@ public class Playerhealth : MonoBehaviour
             {                                                        // currently doesnt work at all
                 Startposition = checkpoint[i].transform.position;
 
-                checkpoint[i].active = false;
+                checkpoint[i].SetActive(false);
             }
         }
 
@@ -41,16 +41,17 @@ public class Playerhealth : MonoBehaviour
             {
 
                 Damage = Hazards[i].GetComponent<Damageplayer>();  // get the current hazards damage 
-
-                if (Damage.Damage >= health) // check if the hazard has one shot the player else just subtract the damage from health
+                if (Damage.Damage != 0)
                 {
-                    lives--;
-                    isDead = true;
-                }
-                else
-                {
-                    health = health - Damage.Damage;    // subtract health                    
+                    if (Damage.Damage >= health) // check if the hazard has one shot the player else just subtract the damage from health
+                    {
+                        isDead = true;
+                    }
+                    else
+                    {
+                        health = health - Damage.Damage;    // subtract health                    
 
+                    }
                 }
 
             }
@@ -67,11 +68,7 @@ public class Playerhealth : MonoBehaviour
             GameObject death = Instantiate<GameObject>(DeathAnim);
             death.transform.position = Startposition;
             transform.position = Startposition;  // if the player dies set them back at the beginning
-            if (lives == 0)
-            {
-
-                    UnityEngine.SceneManagement.SceneManager.LoadScene("CreditScreen");
-            }
+            
 
         }
 
