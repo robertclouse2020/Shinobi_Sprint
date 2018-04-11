@@ -15,7 +15,7 @@ public class KunaiMove : MonoBehaviour
     private GameObject Player;
     private GameObject[] checkpoints;
     public PlayerTeleControl teleparams;
-    public bool HasCollided=true;
+    public bool HasCollided = true;
     public float timer = 0.0f;
     public float maxThrowTime = 3.0f;
     Vector3 Vector;
@@ -24,14 +24,14 @@ public class KunaiMove : MonoBehaviour
     private void Start()
     {
         Hazards = GameObject.FindGameObjectsWithTag("Hazards");
-        Obstacle = GameObject.FindGameObjectsWithTag("Obstacles");
+        Obstacle = GameObject.FindGameObjectsWithTag("Obstacle");
         Player = GameObject.FindGameObjectWithTag("Player");
         teleparams = GameObject.FindGameObjectWithTag("Controller").GetComponent<PlayerTeleControl>();
         Emitter = GameObject.Find("KunaiEmitter");
         checkpoints = GameObject.FindGameObjectsWithTag("Respawn");
         RB = GetComponent<Rigidbody>();
 
-        transform.position = Emitter.transform.position;
+
     }
 
 
@@ -50,7 +50,8 @@ public class KunaiMove : MonoBehaviour
         }
         if (collision.gameObject == Player.gameObject)
         {
-            this.GetComponent<Renderer>().enabled = false;
+            HasCollided = true;
+            GameObject.Destroy(this.gameObject);
             teleparams.activeKunai = false;
             teleparams.CanTeleport = false;
 
@@ -59,7 +60,10 @@ public class KunaiMove : MonoBehaviour
         {
             if (collision.gameObject == Hazards[k].gameObject)
             {
-                //GameObject.Destroy(this.gameObject);
+                HasCollided = true;
+                GameObject.Destroy(this.gameObject);
+                teleparams.activeKunai = false;
+                teleparams.CanTeleport = false;
             }
         }
 
@@ -67,44 +71,38 @@ public class KunaiMove : MonoBehaviour
         {
             if (collision.gameObject == checkpoints[j].gameObject)
             {
-                checkpoints[j].GetComponent<Collider>().enabled = false;
+                checkpoints[j].GetComponent<Renderer>().material.color = Color.gray;
             }
 
         }
 
     }
 
-    private void OnCollisionExit(Collision collision)
-    {
-        for (int j = 0; j < checkpoints.Length; j++)
-        {
-            if (collision.gameObject == checkpoints[j].gameObject)
-            {
-                checkpoints[j].GetComponent<Collider>().enabled = true;
-            }
 
-        }
-    }
 
     public void setDirection(Vector3 directionVector)
     {
+        Vector3 DirectionSpeed;
 
-        RB.velocity = directionVector * speed;
+        directionVector.z = 0;
+
+        
+        DirectionSpeed.x = directionVector.x * speed;
+        DirectionSpeed.y = directionVector.y * speed;
+        DirectionSpeed.z = 0;
+        
+        Debug.Log(DirectionSpeed.magnitude);
+        RB.velocity = DirectionSpeed;
 
     }
 
     public void setRotation(float angle)
     {
-        
 
-        Debug.Log("Before");
-        Debug.Log(RB.rotation.eulerAngles);
-        Debug.Log("After");
-        
-        Quaternion test=Quaternion.identity;
-        test.eulerAngles =new Vector3(0, 0, angle);
+        Quaternion test = Quaternion.identity;
+        test.eulerAngles = new Vector3(0, 0, angle);
         RB.transform.localRotation = test;
-        Debug.Log(RB.transform.rotation.eulerAngles);
+
     }
     // Update is called once per frame
     void Update()
@@ -118,5 +116,8 @@ public class KunaiMove : MonoBehaviour
                 timer = 0;
             }
         }
+        
+        
+
     }
 }
