@@ -34,7 +34,7 @@ public class Playerhealth : MonoBehaviour
                 checkpoint[i].SetActive(false);
             }
         }
-
+        
         for (int i = 0; i < Hazards.Length; i++)        // traverse the Hazards array
         {
             if (collision.gameObject == Hazards[i].gameObject) // check if the player has collided with one of the hazards
